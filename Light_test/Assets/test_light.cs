@@ -87,16 +87,23 @@ public class test_light : MonoBehaviour {
 					MyPosition += (x * 5) + z;
 					Debug.Log (MyPosition);
 					//端についたか確認するために取得している
+					//右下に進んでいる場合
 					if (x > 0 && z > 0) {
 						Row++;
 						Colum++;
-					} else if (x > 0 && z < 0) {
+					} 
+					//左下に進んでいる場合
+					else if (x > 0 && z < 0) {
 						Row++;
 						Colum--;
-					} else if (x < 0 && z > 0) {
+					} 
+					//右上に進んでいる場合
+					else if (x < 0 && z > 0) {
 						Row--;
 						Colum++;
-					} else if (x < 0 && z < 0) {
+					} 
+					//左上に進んでいる場合
+					else if (x < 0 && z < 0) {
 						Row--;
 						Colum--;
 					}
