@@ -16,7 +16,7 @@ public class Get_masu : MonoBehaviour {
 
 	public int Row,Colum;//test_lightで取得させるために用意
 
-
+	GameManager GameManager;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +27,9 @@ public class Get_masu : MonoBehaviour {
 		//マウスクリックがあった時そのマスの情報を取得
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 			Get_Row_Colum ();//マス情報の取得
+			GameObject GameManagiment = GameObject.Find ("GameManager");
+			GameManager = GameManagiment.GetComponent<GameManager>();
+			GameManager.Load_masu();
 			this.gameObject.SendMessage("Light");//光の進行方向を取得
 		}
 	}
@@ -57,10 +60,12 @@ public class Get_masu : MonoBehaviour {
 
 				repeatGameObject = selectedGameObject;//選択オブジェクトの一時保存
 
-				Debug.Log ("行"+Row_Colum_data.Row);
-				Debug.Log ("列"+Row_Colum_data.Colum);
+//				Debug.Log ("行"+Row_Colum_data.Row);
+//				Debug.Log ("列"+Row_Colum_data.Colum);
 			}
-			Debug.DrawLine (ray.origin, hit.point, Color.red);
+//			Debug.DrawLine (ray.origin, hit.point, Color.red);
+		}else{
+			Row = -1;
 		}
 	}
 
@@ -88,8 +93,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_z = 1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//右上角　下ー＞左下ー＞左
 		else if(Row_Colum_data.Row == 0 && Row_Colum_data.Colum == 4){
@@ -107,8 +112,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_z = -1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//左下角　上ー＞右上ー＞右
 		else if(Row_Colum_data.Row == 4 && Row_Colum_data.Colum == 0){
@@ -126,8 +131,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_z = 1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//右下角　上ー＞左上ー＞左
 		else if(Row_Colum_data.Row == 4 && Row_Colum_data.Colum == 4){
@@ -145,8 +150,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_z = -1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//0行目　下ー＞左下ー＞右下
 		else if(Row_Colum_data.Row == 0){
@@ -162,8 +167,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_z = 1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//4行目　上ー＞左上ー＞右上
 		else if(Row_Colum_data.Row == 4){
@@ -178,8 +183,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_z = 1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//0列目 左ー＞左上ー＞左下
 		else if(Row_Colum_data.Colum == 0){
@@ -194,8 +199,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_x = 1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//4列目　右ー＞右上ー＞右下
 		else if(Row_Colum_data.Colum == -1){
@@ -210,8 +215,8 @@ public class Get_masu : MonoBehaviour {
 				lightDir_x = 1;
 				ClickCountFlag = 0;
 			}
-			Debug.Log ("方向 X: " + lightDir_x);
-			Debug.Log ("方向 Z: " + lightDir_z);
+//			Debug.Log ("方向 X: " + lightDir_x);
+//			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 	}
 }
