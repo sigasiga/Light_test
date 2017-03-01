@@ -67,10 +67,9 @@ public class test_light : MonoBehaviour {
 					if (Row == 0 && i != 0) {
 						//向きを変える
 						if (isCorner) {
-							lightDir_x = -1;
+							lightDir_x = 1;
 							MyPosition += (lightDir_x * 5) + lightDir_z;//移動方向の取得
 							masu_Change (MyPosition.ToString());
-//							Debug.Log (MyPosition);
 							isCorner = false;
 						} else {
 							MyPosition += (lightDir_x * 5) + lightDir_z;
@@ -95,10 +94,10 @@ public class test_light : MonoBehaviour {
 					//列が下になったら
 					else if (Row == 4 && i != 0) {
 						if (isCorner) {
-							lightDir_x = 1;
+							lightDir_x = -1;
 							MyPosition += (lightDir_x * 5) + lightDir_z;
 							masu_Change (MyPosition.ToString());
-//							Debug.Log (MyPosition);
+							//Debug.Log ("aaaaaaaaaaaa"+MyPosition);
 							isCorner = false;
 						} else {
 							MyPosition += (lightDir_x * 5) + lightDir_z;

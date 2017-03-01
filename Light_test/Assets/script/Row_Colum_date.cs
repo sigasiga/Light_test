@@ -25,26 +25,8 @@ public class Row_Colum_date : MonoBehaviour {
 		GameManager = GameManagiment.GetComponent<GameManager>();
 		if(GameManager.tern){
 			Masu_manager = 1;
-			for(int i=0;i<25;i++){
-				if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
-					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[0];
-				}else if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==-1){
-					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[1];
-				}else{
-
-				}
-			}
 		}else{
 			Masu_manager = -1;
-			for(int i=0;i<25;i++){
-				if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
-					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[0];
-				}else if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==-1){
-					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[1];
-				}else{
-
-				}
-			}
 		}
 	}
 }

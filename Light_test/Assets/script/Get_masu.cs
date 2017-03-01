@@ -14,6 +14,8 @@ public class Get_masu : MonoBehaviour {
 	int ClickCountFlag = 0;//クリックした回数によって方向の変更をするために用意
 	bool repeatChackFlag = true;//同じマスを連続で選択しているか判別
 
+	int position;
+
 	public int Row,Colum;//test_lightで取得させるために用意
 
 	GameManager GameManager;
@@ -24,19 +26,26 @@ public class Get_masu : MonoBehaviour {
 	}
 
 	public void Change(){
-//		GameObject GameManagiment = GameObject.Find ("GameManager");
-//		GameManager = GameManagiment.GetComponent<GameManager>();
-//		GameManager.Load_masu();
-//		this.gameObject.SendMessage("Light");//光の進行方向を取得
+		GameObject GameManagiment = GameObject.Find ("GameManager");
+		GameManager = GameManagiment.GetComponent<GameManager>();
+		GameManager.Load_masu();
+		GetVector3 (Row_Colum_data,repeatChackFlag);
+		this.gameObject.SendMessage("Light");//光の進行方向を取得
+		//マスの陣地色の変更
+		for(int i=0;i<25;i++){
+			if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
+				GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[0];
+			}else if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==-1){
+				GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[1];
+			}else{
+
+			}
+		}
 	}
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 			Get_Row_Colum ();//マス情報の取得
-			GameObject GameManagiment = GameObject.Find ("GameManager");
-			GameManager = GameManagiment.GetComponent<GameManager>();
-			GameManager.Load_masu();
-			this.gameObject.SendMessage("Light");//光の進行方向を取得
 		}
 	}
 
@@ -55,14 +64,20 @@ public class Get_masu : MonoBehaviour {
 				Row = Row_Colum_data.Row;
 				Colum = Row_Colum_data.Colum;
 
-				//同じマスを連続で指定しているか判断
-				if(repeatGameObject == selectedGameObject || repeatGameObject == null){
-					repeatChackFlag = true;
-					GetVector3 (Row_Colum_data,repeatChackFlag);
-				}else {
-					repeatChackFlag = false;
-					GetVector3 (Row_Colum_data,repeatChackFlag);
-				}
+				position = (Row * 5) + Colum;
+				GameObject GameManagiment = GameObject.Find ("GameManager");
+				GameManager = GameManagiment.GetComponent<GameManager>();
+				GameManager.Load_masu();
+				GameManager.Masu [position].GetComponent<Renderer> ().material = GameManager.Material[3];
+
+//				//同じマスを連続で指定しているか判断
+//				if(repeatGameObject == selectedGameObject || repeatGameObject == null){
+//					repeatChackFlag = true;
+//					GetVector3 (Row_Colum_data,repeatChackFlag);
+//				}else {
+//					repeatChackFlag = false;
+//					GetVector3 (Row_Colum_data,repeatChackFlag);
+//				}
 
 				repeatGameObject = selectedGameObject;//選択オブジェクトの一時保存
 
@@ -71,7 +86,6 @@ public class Get_masu : MonoBehaviour {
 			}
 //			Debug.DrawLine (ray.origin, hit.point, Color.red);
 		}else{
-			Row = -1;
 		}
 	}
 
@@ -209,8 +223,8 @@ public class Get_masu : MonoBehaviour {
 //			Debug.Log ("方向 Z: " + lightDir_z);
 		}
 		//4列目　右ー＞右上ー＞右下
-		else if(Row_Colum_data.Colum == -1){
-			lightDir_z = 1;
+		else if(Row_Colum_data.Colum == 4){
+			lightDir_z = -1;
 			if(ClickCountFlag == 0){
 				lightDir_x = 0;
 				ClickCountFlag++;

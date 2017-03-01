@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Score.cs" />
      <Compile Include="Assets\script\GameManager.cs" />
      <Compile Include="Assets\script\Get_masu.cs" />
      <Compile Include="Assets\script\Row_Colum_date.cs" />

@@ -1,8 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/test_light.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/GameManager.cs">
     <Files>
-      <File FileName="Assets/test_light.cs" Line="7" Column="15" />
+      <File FileName="Assets/script/GameManager.cs" Line="39" Column="40" />
+      <File FileName="Assets/script/Get_masu.cs" Line="239" Column="40" />
+      <File FileName="Assets/script/Row_Colum_date.cs" Line="29" Column="22" />
+      <File FileName="Assets/script/test_light.cs" Line="64" Column="34" />
+      <File FileName="Assets/Score.cs" Line="12" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

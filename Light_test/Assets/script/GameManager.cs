@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	public bool tern=true;//ターン管理
@@ -9,21 +10,50 @@ public class GameManager : MonoBehaviour {
 	public Material[] Material;
 	int[] Masu_save= new int[25];
 
+	bool resultFlag=false;
+
+	int Mypoint,YourPoint;
+
+	public Text MyScore;
+	public Text YourScore;
+
 	// Use this for initialization
 	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	void result(){
+		Mypoint = 0;
+		YourPoint = 0;
+		for(int i=0; i<Masu.Length; i++){
+			if(Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
+				Mypoint++;
+			}else if(Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==-1){
+				YourPoint++;
+			}
+		}
+		MyScore.text = Mypoint.ToString();
+		YourScore.text = YourPoint.ToString();
+		Debug.Log ("My:  " + Mypoint + "  Your: " + YourPoint);
+
+		resultFlag = true;
 		for (int i=0; i<Masu.Length;i++){
-			if (Masu [i].GetComponent<Row_Colum_date> ().Masu_manager == 0) {
-				break;
+			if (Masu [i].GetComponent<Row_Colum_date> ().Masu_manager != 0) {
 			} else {
-				Debug.Log ("終わり");
+				resultFlag = false;
+				break;
+			}
+		}
+		if(resultFlag){
+			if(Mypoint>YourPoint){
+				Debug.Log ("自分の勝ち");
+			}else if(Mypoint<YourPoint){
+				Debug.Log ("相手の勝ち");
+			}else{
+				Debug.Log ("引き分け");
 			}
 		}
 	}
@@ -37,16 +67,13 @@ public class GameManager : MonoBehaviour {
 	public void Load_masu(){
 		for(int i=0; i<Masu.Length; i++){
 			Masu [i].GetComponent<Row_Colum_date> ().Masu_manager = Masu_save [i];
-			for(int j=0; j<Masu.Length; j++){
-				Debug.Log (Masu [i].GetComponent<Row_Colum_date> ().Masu_manager);
-			}
 
 			if(Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
 				Masu [i].GetComponent<Renderer> ().material = Material[0];
 			}else if(Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==-1){
 				Masu [i].GetComponent<Renderer> ().material = Material[1];
 			}else{
-				
+				Masu [i].GetComponent<Renderer> ().material = Material[2];
 			}
 		}
 	}
@@ -55,20 +82,12 @@ public class GameManager : MonoBehaviour {
 	public void Tern(){
 		if(tern){
 			tern = false;
-			for(int i=0; i<Masu.Length; i++){
-				Debug.Log (Masu [i].GetComponent<Row_Colum_date> ().Masu_manager);
-			}
 			Save_masu ();
 			result ();
-			Debug.Log ("Your_tern");
 		}else{
 			tern = true;
-			for(int i=0; i<Masu.Length; i++){
-				Debug.Log (Masu [i].GetComponent<Row_Colum_date> ().Masu_manager);
-			}
 			Save_masu ();
 			result();
-			Debug.Log ("My_tern");
 		}
 	}
 }
