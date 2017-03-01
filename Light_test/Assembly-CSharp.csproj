@@ -46,11 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\Get_masu.cs" />
-     <Compile Include="Assets\Row_Colum_date.cs" />
-     <Compile Include="Assets\test.cs" />
-     <Compile Include="Assets\test_light.cs" />
+     <Compile Include="Assets\script\GameManager.cs" />
+     <Compile Include="Assets\script\Get_masu.cs" />
+     <Compile Include="Assets\script\Row_Colum_date.cs" />
+     <Compile Include="Assets\script\test.cs" />
+     <Compile Include="Assets\script\test_light.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>

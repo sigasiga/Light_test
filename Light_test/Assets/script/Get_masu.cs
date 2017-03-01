@@ -22,9 +22,15 @@ public class Get_masu : MonoBehaviour {
 	void Start () {
 		//Screen.lockCursor = true;
 	}
+
+	public void Change(){
+//		GameObject GameManagiment = GameObject.Find ("GameManager");
+//		GameManager = GameManagiment.GetComponent<GameManager>();
+//		GameManager.Load_masu();
+//		this.gameObject.SendMessage("Light");//光の進行方向を取得
+	}
 	// Update is called once per frame
 	void Update () {
-		//マウスクリックがあった時そのマスの情報を取得
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
 			Get_Row_Colum ();//マス情報の取得
 			GameObject GameManagiment = GameObject.Find ("GameManager");
