@@ -18,7 +18,10 @@ public class test_light : MonoBehaviour {
 
 	Row_Colum_date Row_Colum_data;//マスの行列情報取得
 
-	//direction = new Vector3 (x, 0, z);
+	//光線の描画のために始点と終点を用意
+	Vector3 light_start_position;
+	Vector3 light_Intermediate_position;
+	Vector3 light_last_position;
 
 	// Use this for initialization
 	void Start () {

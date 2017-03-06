@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 	}
 
+	//途中経過、結果用関数
 	void result(){
 		Mypoint = 0;
 		YourPoint = 0;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	//一時保存してあるマスデータの読み込み
 	public void Load_masu(){
 		for(int i=0; i<Masu.Length; i++){
 			Masu [i].GetComponent<Row_Colum_date> ().Masu_manager = Masu_save [i];

@@ -25,6 +25,7 @@ public class Get_masu : MonoBehaviour {
 		//Screen.lockCursor = true;
 	}
 
+	//光の進行方向変化用の関数
 	public void Change(){
 		GameObject GameManagiment = GameObject.Find ("GameManager");
 		GameManager = GameManagiment.GetComponent<GameManager>();
@@ -42,6 +43,7 @@ public class Get_masu : MonoBehaviour {
 			}
 		}
 	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Mouse0)){
@@ -70,23 +72,17 @@ public class Get_masu : MonoBehaviour {
 				GameManager.Load_masu();
 				GameManager.Masu [position].GetComponent<Renderer> ().material = GameManager.Material[3];
 
-//				//同じマスを連続で指定しているか判断
-//				if(repeatGameObject == selectedGameObject || repeatGameObject == null){
-//					repeatChackFlag = true;
-//					GetVector3 (Row_Colum_data,repeatChackFlag);
-//				}else {
-//					repeatChackFlag = false;
-//					GetVector3 (Row_Colum_data,repeatChackFlag);
-//				}
-
 				repeatGameObject = selectedGameObject;//選択オブジェクトの一時保存
 
-//				Debug.Log ("行"+Row_Colum_data.Row);
-//				Debug.Log ("列"+Row_Colum_data.Colum);
 			}
-//			Debug.DrawLine (ray.origin, hit.point, Color.red);
-		}else{
 		}
+		else{
+		}
+	}
+		
+	//マス選択の禁則事項
+	void NG_Get_masu(){
+		
 	}
 
 
