@@ -6,7 +6,7 @@ public class test_light : MonoBehaviour {
 	//ユニットの配置位置
 	int Row=4;//行
 	int Colum=3;//列
-	int MyPosition;//現在地
+	public int MyPosition;//現在地
 	Vector3 direction;//方向
 
 	int lightDir_x=-1;//x方向の取得ー＞行と対応
@@ -19,6 +19,8 @@ public class test_light : MonoBehaviour {
 	Row_Colum_date Row_Colum_data;//マスの行列情報取得
 
 	//光線の描画のために始点と終点を用意
+	//GameObject 
+
 	Vector3 light_start_position;
 	Vector3 light_Intermediate_position;
 	Vector3 light_last_position;

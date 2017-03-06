@@ -46,9 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\NeonShapes\SelfDestroyScript.cs" />
      <Compile Include="Assets\Score.cs" />
      <Compile Include="Assets\script\GameManager.cs" />
      <Compile Include="Assets\script\Get_masu.cs" />
+     <Compile Include="Assets\script\Light_Efect.cs" />
      <Compile Include="Assets\script\Row_Colum_date.cs" />
      <Compile Include="Assets\script\test.cs" />
      <Compile Include="Assets\script\test_light.cs" />

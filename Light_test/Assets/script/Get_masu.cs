@@ -27,12 +27,12 @@ public class Get_masu : MonoBehaviour {
 
 	//光の進行方向変化用の関数
 	public void Change(){
-		GameObject GameManagiment = GameObject.Find ("GameManager");
-		GameManager = GameManagiment.GetComponent<GameManager>();
+		GameManager = this.GetComponent<GameManager>();
 		GameManager.Load_masu();
 		GetVector3 (Row_Colum_data,repeatChackFlag);
 		this.gameObject.SendMessage("Light");//光の進行方向を取得
 		//マスの陣地色の変更
+
 		for(int i=0;i<25;i++){
 			if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
 				GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[0];
@@ -42,6 +42,24 @@ public class Get_masu : MonoBehaviour {
 
 			}
 		}
+
+//		for(int i=0;i<25;i++){
+//			if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==1){
+//				if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_set==1 || GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_set==-1){
+//					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[4];
+//				}else{
+//					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[0];
+//				}
+//			}else if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_manager==-1){
+//				if(GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_set==1 || GameManager.Masu [i].GetComponent<Row_Colum_date> ().Masu_set==-1){
+//					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[5];
+//				}else{
+//					GameManager.Masu [i].GetComponent<Renderer> ().material = GameManager.Material[1];
+//				}
+//			}else{
+//
+//			}
+//		}
 	}
 
 	// Update is called once per frame
@@ -62,17 +80,22 @@ public class Get_masu : MonoBehaviour {
 				//当たったオブジェクトの行列の取得
 				GameObject selectedGameObject = hit.collider.gameObject;
 				Row_Colum_data = selectedGameObject.GetComponent<Row_Colum_date> ();
-				//test_lightに変数に保存
-				Row = Row_Colum_data.Row;
-				Colum = Row_Colum_data.Colum;
 
-				position = (Row * 5) + Colum;
-				GameObject GameManagiment = GameObject.Find ("GameManager");
-				GameManager = GameManagiment.GetComponent<GameManager>();
-				GameManager.Load_masu();
-				GameManager.Masu [position].GetComponent<Renderer> ().material = GameManager.Material[3];
+				if(Row_Colum_data.Masu_set==1 || Row_Colum_data.Masu_set==-1){
+					
+				}else{
+					Debug.Log ("入った");
+					//test_lightに変数に保存
+					Row = Row_Colum_data.Row;
+					Colum = Row_Colum_data.Colum;
 
-				repeatGameObject = selectedGameObject;//選択オブジェクトの一時保存
+					position = (Row * 5) + Colum;
+					GameManager = this.GetComponent<GameManager>();
+					GameManager.Load_masu();
+					GameManager.Masu [position].GetComponent<Renderer> ().material = GameManager.Material[3];
+
+					repeatGameObject = selectedGameObject;//選択オブジェクトの一時保存
+				}
 
 			}
 		}
@@ -81,9 +104,9 @@ public class Get_masu : MonoBehaviour {
 	}
 		
 	//マス選択の禁則事項
-	void NG_Get_masu(){
-		
-	}
+//	bool NG_Get_masu(int Row, int Colum){
+//		
+//	}
 
 
 	//光の進行方向の決定する関数

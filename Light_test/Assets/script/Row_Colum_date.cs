@@ -7,7 +7,9 @@ public class Row_Colum_date : MonoBehaviour {
 	public int Row;
 	public int Colum;
 
-	public int Masu_manager=0;
+	public int Masu_manager=0;//どちらのマスに属しているか
+
+	public int Masu_set = 0;//ライトが置かれたマスか判定
 
 	GameManager GameManager;
 
