@@ -11,6 +11,8 @@ public class Light_Efect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (transform.position.z <= 4.1f) {
+			transform.position += new Vector3 (0, 0, 0.1f);
+		}
 	}
 }

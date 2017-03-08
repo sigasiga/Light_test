@@ -21,12 +21,36 @@ public class GameManager : MonoBehaviour {
 	public Text MyScore;
 	public Text YourScore;
 
+	public GameObject Result;
+	public GameObject result_text;
+
+	public GameObject Light;
+	public GameObject pre_light;
+
+	float Light_positon_x;
+	float Light_positon_z;
+
 	// Use this for initialization
 	void Start () {
+//		float Light_positon_x = Light[0].GetComponent<Transform> ().transform.position.x;
+//		float Light_positon_z = Light[0].GetComponent<Transform> ().transform.position.z;
+//
+		Light = GameObject.Find("Light_red");
+		float Light_positon_x = Light.transform.position.x;
+		float Light_positon_z = Light.transform.position.z;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		float Light_positon_z = Light.transform.position.z;
+		if(Light_positon_z <=4.1f){
+		}else{
+			Destroy(Light);
+			Instantiate (pre_light,new Vector3(0,1,0),transform.rotation);
+			Light = GameObject.Find("Light_red(Clone");
+		}
 	}
 		
 
@@ -133,12 +157,13 @@ public class GameManager : MonoBehaviour {
 		}
 		if(resultFlag){
 			if(Mypoint>YourPoint){
-				Debug.Log ("自分の勝ち");
+				result_text.GetComponent<Text> ().text = "RED WIN";
 			}else if(Mypoint<YourPoint){
-				Debug.Log ("相手の勝ち");
+				result_text.GetComponent<Text> ().text = "BLUE WIN";
 			}else{
-				Debug.Log ("引き分け");
+				result_text.GetComponent<Text> ().text = "DROW";
 			}
+			Result.SetActive (true);
 		}
 	}
 }
