@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 //		float Light_positon_x = Light[0].GetComponent<Transform> ().transform.position.x;
 //		float Light_positon_z = Light[0].GetComponent<Transform> ().transform.position.z;
 //
-		Light = GameObject.Find("Light_red");
+		Light = Instantiate (pre_light,new Vector3(0,1,0),transform.rotation) as GameObject;
 		float Light_positon_x = Light.transform.position.x;
 		float Light_positon_z = Light.transform.position.z;
 
@@ -43,13 +43,19 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		
 		float Light_positon_z = Light.transform.position.z;
+		if ( Light != null )
+		{
+			//Light = new GameObject();
+			Debug.Log( Light.name ); // 名前を出力
+		}
+		//Debug.Log (Light_positon_z);
 		if(Light_positon_z <=4.1f){
 		}else{
 			Destroy(Light);
-			Instantiate (pre_light,new Vector3(0,1,0),transform.rotation);
-			Light = GameObject.Find("Light_red(Clone");
+			Light = Instantiate (pre_light,new Vector3(0,1,0),transform.rotation) as GameObject;
+
 		}
 	}
 		
